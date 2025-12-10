@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubu & Dudu - Cozy Couple</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap');
+        
+        :root {
+            --accent: #f6b7c0;
+            --accent-soft: #fde2d2;
+            --brown: #b58364;
+            --brown-dark: #8f5b3f;
+            --cream: #fffaf5;
+            --text: #2d1f18;
+            --muted: #6f5a4c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #fff3eb 0%, #fde7f2 100%);
+            opacity: 0.6;
+            z-index: -1;
+        }
+        
+        .main-gif {
+            width: 320px;
+            height: 320px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.12));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
+        }
+        
+        /* Hero Social Links */
+        .hero-social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            background: white;
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(246,183,192,0.4);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, #fcd8c8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 1.6rem;
+            max-width: 680px;
+        }
+        
+        .scroll-to-quiz {
+            padding: 1rem 2.6rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 15px rgba(246,183,192,0.35);
+            margin-bottom: 2.4rem;
+        }
+        
+        .scroll-to-quiz:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(246,183,192,0.45);
+        }
+        
+        .character-buttons {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .character-card {
+            text-align: center;
+        }
+        
+        .character-name {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .mini-gif {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .btn-bonk {
+            background-color: #ffd479;
+            color: #4c341f;
+        }
+        
+        .btn-bonk:hover {
+            background-color: #ffc85c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,212,121,0.4);
+        }
+        
+        .btn-dex {
+            background-color: #4c341f;
+            color: #fff;
+        }
+        
+        .btn-dex:hover {
+            background-color: #3c2a18;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        }
+        
+        /* CA Box */
+        .ca-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 1rem auto 0;
+            max-width: 620px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+        
+        .ca-label {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .ca-address {
+            background: #f6f1ec;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-family: monospace;
+            font-size: 1rem;
+            word-break: break-all;
+            color: var(--text);
+        }
+        
+        .copy-ca-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(246,183,192,0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copy-ca-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(246,183,192,0.45);
+        }
+        
+        .copy-ca-btn.copied {
+            background: #4CAF50;
+            transform: scale(1.05);
+        }
+        
+        /* Floating gifs decoration */
+        .floating-gif {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            opacity: 0.7;
+            animation: floatAround 15s ease-in-out infinite;
+        }
+        
+        .floating-gif:nth-child(1) {
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        
+        .floating-gif:nth-child(2) {
+            top: 18%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        .floating-gif:nth-child(3) {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: 5s;
+        }
+        
+        .floating-gif:nth-child(4) {
+            bottom: 22%;
+            right: 8%;
+            animation-delay: 7s;
+        }
+        
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(18px, -24px) rotate(90deg); }
+            50% { transform: translate(-22px, -40px) rotate(180deg); }
+            75% { transform: translate(-30px, -16px) rotate(270deg); }
+        }
+        
+        /* Personality Section */
+        .personality-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff7ef;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .title-gif {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .personalities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3.4rem;
+        }
+        
+        .personality-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(246,183,192,0.08) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        
+        .personality-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .personality-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .bubu-card h3 { color: var(--accent); }
+        .dudu-card h3 { color: var(--brown); }
+        
+        .personality-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cute-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.4rem;
+            text-align: center;
+            color: var(--accent);
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(246,183,192,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        /* Quiz Section */
+        .quiz-section {
+            padding: 5rem 2rem;
+            max-width: 880px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .quiz-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .question {
+            background: white;
+            padding: 2.4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 1.6rem;
+        }
+        
+        .question h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .question-gif {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        
+        .option { display: block; width: 100%; }
+        
+        .option label {
+            display: block;
+            padding: 1rem 1.5rem;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .option label:hover {
+            border-color: var(--accent);
+            background: #fff3f7;
+        }
+        
+        .option input[type="radio"] { display: none; }
+        
+        .option input[type="radio"]:checked + label {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .submit-quiz {
+            display: block;
+            margin: 3rem auto 0;
+            padding: 1.4rem 3rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(246,183,192,0.35);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .submit-quiz:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(246,183,192,0.45);
+        }
+        
+        .submit-quiz:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 2rem;
+            background: #fdf4ec;
+            position: relative;
+        }
+        
+        .gallery-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+            background: #f6f1ec;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+            padding: 1.4rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        
+        .gallery-overlay p {
+            color: white;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Result Section */
+        .result {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: 3rem;
+        }
+        
+        .result h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--text);
+        }
+        
+        .result-gif {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 2rem 0;
+        }
+        
+        .ca-display {
+            background: #f6f1ec;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-family: monospace;
+            font-size: 1.05rem;
+            word-break: break-all;
+        }
+        
+        /* Share Section */
+        .share-section { margin: 2rem 0; }
+        
+        .copy-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(246,183,192,0.35);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(246,183,192,0.45);
+        }
+        
+        .copy-btn.copied {
+            background: #4CAF50;
+            transform: scale(1.05);
+        }
+        
+        .copy-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Result Content Styling */
+        .result-content {
+            background: linear-gradient(135deg, #fff 0%, #f9f3ec 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 3px solid var(--accent);
+            min-height: 360px;
+            min-width: 320px;
+            position: relative;
+        }
+        
+        .result-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .trait-tag {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(246,183,192,0.35);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, #fff2ea 0%, #fde7f2 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid #f3d9cc;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1.2rem;
+        }
+        
+        .footer-text {
+            margin: 1rem 0;
+            color: var(--muted);
+            max-width: 820px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--brown);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover { color: var(--accent); }
+        
+        .footer-bottom {
+            border-top: 1px solid #eee;
+            padding-top: 1.2rem;
+            color: #999;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.05rem; }
+            .main-gif { width: 220px; height: 220px; }
+            .personality-title, .quiz-title, .gallery-title { font-size: 2rem; }
+            .floating-gif { width: 55px; height: 55px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="bubu1.gif" class="floating-gif" alt="Bubu on a mission">
+        <img src="dudu4.gif" class="floating-gif" alt="Dudu sending hearts">
+        <img src="bubududu3.gif" class="floating-gif" alt="Bubududu giggles">
+        <img src="dudu5.gif" class="floating-gif" alt="Dudu cozy dumpling">
+        
+        <img src="main.png" alt="Bubu and Dudu" class="main-gif">
+        
+        <div class="hero-social-links">
+            <a class="social-link" href="https://twitter.com/BNBubuDudu" target="_blank" rel="noopener">X</a>
+            <a class="social-link" href="https://twitter.com/i/communities/1998099909849780321" target="_blank" rel="noopener">??</a>
+        </div>
+        
+        <h1>Bubu & Dudu</h1>
+        
+        <p class="hero-subtitle">
+            Bubu (the excitable panda) and Dudu (the gentle bear) were created by artist Huang Xiao B in June 2018. 
+            Born as Weibo stickers, their loving everyday adventures now cozy up feeds worldwide.
+        </p>
+        
+        <a href="#quiz" class="scroll-to-quiz">
+            <img src="bubu4.gif" class="mini-gif" alt="Bubu">
+            Take the Personality Quiz
+            <img src="dudu4.gif" class="mini-gif" alt="Dudu">
+        </a>
+        
+        <!-- Contract Address Box -->
+        <div class="ca-box">
+            <div class="ca-label">Contract Address (CA)</div>
+            <div class="ca-address" id="ca-address">............................................................</div>
+            <button class="copy-ca-btn" id="copy-ca-btn">
+                <img src="bubu6.gif" class="mini-gif" alt="">
+                Copy CA
+            </button>
+        </div>
+    </section>
+    
+    <!-- Personality Section -->
+    <section class="personality-section">
+        <h2 class="personality-title">
+            <img src="bubududu1.gif" class="title-gif" alt="">
+            Meet Our Favorite Duo
+            <img src="bubududu2.gif" class="title-gif" alt="">
+        </h2>
+        
+        <div class="personalities">
+            <div class="personality-card bubu-card">
+                <h3>Bubu (the panda)</h3>
+                <p>
+                    Bubu is the playful spark—dramatic entrances, surprise hugs, and the loudest cheer when you need it. 
+                    She thrives on cute chaos, turning every outing into a mini adventure. Underneath the mischief is a heart that loves big and tells you loudly.
+                </p>
+            </div>
+            
+            <div class="personality-card dudu-card">
+                <h3>Dudu (the bear)</h3>
+                <p>
+                    Dudu is the calm anchor—soft, steady, and endlessly caring. He remembers your favorite snack, holds the umbrella, and beams whenever Bubu shines. 
+                    His gentle presence makes naps sweeter, walks slower, and every day feel safe and loved.
+                </p>
+            </div>
+        </div>
+        
+        <div class="cute-text">
+            <img src="bubududu4.gif" class="title-gif" alt="">
+            Bubududu together is the love story: born as a June 2018 sticker pack on Weibo, now cherished by fans everywhere—plushies, lamps, hoodies, and smiles to match.
+            <img src="bubududu7.gif" class="title-gif" alt="">
+        </div>
+    </section>
+    
+    <!-- Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <h2 class="quiz-title">
+            <img src="bubu2.gif" class="title-gif" alt="">
+            Which Bubu & Dudu vibe are you?
+            <img src="dudu1.gif" class="title-gif" alt="">
+        </h2>
+        
+        <form id="personality-quiz">
+            <div class="question">
+                <h3><img src="bubududu6.gif" class="question-gif" alt=""> 1. Weekend plans look like...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q1" value="outdoor" id="q1-a">
+                        <label for="q1-a">Hunting for new snacks or a night market with squeals of excitement</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="date" id="q1-b">
+                        <label for="q1-b">Planning a sweet surprise date and taking a million pics</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="cozy" id="q1-c">
+                        <label for="q1-c">Staying in with blankets, tea, and your comfort show</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="craft" id="q1-d">
+                        <label for="q1-d">DIY-ing something cute or painting together</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="bubu3.gif" class="question-gif" alt=""> 2. In a group, you usually...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q2" value="lead-pranks" id="q2-a">
+                        <label for="q2-a">Take the lead, hype everyone up, and start the silliness</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="hype" id="q2-b">
+                        <label for="q2-b">Drop memes and keep spirits high from the sidelines</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="watchful" id="q2-c">
+                        <label for="q2-c">Stay observant, making sure everyone is comfortable</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="host" id="q2-d">
+                        <label for="q2-d">Host gently—food ready, vibes calm, zero stress</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="dudu6.gif" class="question-gif" alt=""> 3. When there’s a problem, you...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q3" value="jump-first" id="q3-a">
+                        <label for="q3-a">Charge in and figure it out on the fly</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="plan-ahead" id="q3-b">
+                        <label for="q3-b">Map a calm plan, then move</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="improvise-fun" id="q3-c">
+                        <label for="q3-c">Improvise a fun workaround until it’s solved</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="slow-steady" id="q3-d">
+                        <label for="q3-d">Take slow, steady steps and keep everyone reassured</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="bubu4.gif" class="question-gif" alt=""> 4. Your love language is...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q4" value="grand-gesture" id="q4-a">
+                        <label for="q4-a">Big gestures, silly serenades, dramatic flair</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="snug-cuddle" id="q4-b">
+                        <label for="q4-b">Soft hugs, blankets, and snacks delivered to your lap</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="protective" id="q4-c">
+                        <label for="q4-c">Quiet protection and thoughtful acts of service</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="playful-boop" id="q4-d">
+                        <label for="q4-d">Playful teasing, boops, and endless inside jokes</label>
+                    </div>
+                </div>
+            </div>
+            <div class="question">
+                <h3><img src="dudu7.gif" class="question-gif" alt=""> 5. Under stress you...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q5" value="move-body" id="q5-a">
+                        <label for="q5-a">Dance it out, walk it off, or do something active</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="snack-nap" id="q5-b">
+                        <label for="q5-b">Blanket burrito, snacks, and a calming playlist</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="organize" id="q5-c">
+                        <label for="q5-c">Make a list, tidy the space, create order</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="draw-it" id="q5-d">
+                        <label for="q5-d">Draw, write, or craft to let it out</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="bubu7.gif" class="question-gif" alt=""> 6. Your communication style...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q6" value="gif-storm" id="q6-a">
+                        <label for="q6-a">Voice notes, GIF storms, dramatic storytelling</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="quiet-assurance" id="q6-b">
+                        <label for="q6-b">Simple, steady reassurance and facts</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="playful-roast" id="q6-c">
+                        <label for="q6-c">Light jokes and gentle roasting to cheer people up</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="listening" id="q6-d">
+                        <label for="q6-d">Listening first, then a hug or two</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="dudu3.gif" class="question-gif" alt=""> 7. What motivates you most?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q7" value="thrill" id="q7-a">
+                        <label for="q7-a">Chasing new experiences and stories</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="steady-home" id="q7-b">
+                        <label for="q7-b">Protecting and taking care of your favorite people</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="home-base" id="q7-c">
+                        <label for="q7-c">Building a soft, calm home base</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="spread-joy" id="q7-d">
+                        <label for="q7-d">Sharing joy, memories, and little surprises</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <h3><img src="bubu9.gif" class="question-gif" alt=""> 8. Free time means...</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q8" value="street-food" id="q8-a">
+                        <label for="q8-a">Exploring a street food spot or new café</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="movie-cocoon" id="q8-b">
+                        <label for="q8-b">Movie marathon and snacks on the couch</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="plan-surprise" id="q8-c">
+                        <label for="q8-c">Plotting a cute surprise for someone you love</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="share-sunset" id="q8-d">
+                        <label for="q8-d">Watching the sunset together, phones down</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-quiz" disabled>
+                <img src="bubu4.gif" class="mini-gif" alt="">
+                Discover Your Bubududu vibe!
+                <img src="dudu4.gif" class="mini-gif" alt="">
+            </button>
+        </form>
+        
+        <!-- Result Section -->
+        <div id="quiz-result" class="result">
+            <div id="result-content" class="result-content">
+                <h2 id="result-title" class="result-title">
+                    <img id="result-gif-left" src="" class="title-gif" alt="">
+                    <span id="result-text"></span>
+                    <img id="result-gif-right" src="" class="title-gif" alt="">
+                </h2>
+                <img id="result-main-gif" src="" alt="" class="result-gif">
+                <p id="result-description" style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--muted);"></p>
+                <div id="result-traits" class="result-traits"></div>
+            </div>
+            
+            <div class="share-section">
+                <div class="copy-buttons">
+                    <button id="try-again" class="copy-btn" style="background: linear-gradient(135deg, #b58364 0%, #d4a885 100%);">
+                        <img src="bubududu6.gif" class="mini-gif" alt="">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2 class="gallery-title">
+            <img src="bubududu5.gif" class="title-gif" alt="">
+            Bubududu Moments
+            <img src="bubududu7.gif" class="title-gif" alt="">
+        </h2>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="bubududu1.gif" alt="Bubu kisses Dudu">
+                <div class="gallery-overlay"><p>Love taps and tiny hearts</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu2.gif" alt="Dudu spins Bubu">
+                <div class="gallery-overlay"><p>Bear hugs that lift you up</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu3.gif" alt="Bubu whispering to Dudu">
+                <div class="gallery-overlay"><p>Secret jokes forever</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu4.gif" alt="Bubu and Dudu cuddling">
+                <div class="gallery-overlay"><p>Cozy cuddles on repeat</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu5.gif" alt="Back massage time">
+                <div class="gallery-overlay"><p>Taking care of each other</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu6.gif" alt="Selfie time">
+                <div class="gallery-overlay"><p>Document every little joy</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="bubududu7.gif" alt="Happy spin">
+                <div class="gallery-overlay"><p>Spinning into happiness</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="1.png" alt="Still art 1">
+                <div class="gallery-overlay"><p>Illustrated sweetness</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="2.png" alt="Still art 2">
+                <div class="gallery-overlay"><p>Panda giggles</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="3.png" alt="Still art 3">
+                <div class="gallery-overlay"><p>Bear blush</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="4.png" alt="Still art 4">
+                <div class="gallery-overlay"><p>Together, always</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="bubududu1.gif" class="mini-gif" alt="">
+                Bubu & Dudu
+                <img src="bubududu1.gif" class="mini-gif" alt="">
+            </div>
+            <p class="footer-text">
+                Created by Huang Xiao B in 2018, Bubu and Dudu keep spreading comfort, laughter, and gentle love—one sticker, plushie, and hug at a time.
+            </p>
+            <div class="footer-links">
+                <a href="#quiz">Take Quiz</a>
+                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bubu & Dudu. All characters by Huang Xiao B.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Personality types with detailed descriptions
+        const personalityTypes = {
+            'bubu-spark': {
+                title: 'Bubu Spark',
+                gif: 'bubu3.gif',
+                leftGif: 'bubu2.gif',
+                rightGif: 'bubu2.gif',
+                description: 'You are Bubu at full volume—playful, bold, and impossible to ignore. You light up rooms, hype your people, and turn tiny moments into memories.',
+                traits: ['Spontaneous', 'Playful', 'Bold', 'Hype friend'],
+                team: 'Team Bubu'
+            },
+            'bubu-creative': {
+                title: 'Bubu Soft Extra',
+                gif: 'bubu4.gif',
+                leftGif: 'bubu6.gif',
+                rightGif: 'bubu6.gif',
+                description: 'You lead with heart and aesthetics—romantic gestures, cute plans, and endless creativity. You show love loudly and beautifully.',
+                traits: ['Affectionate', 'Expressive', 'Imaginative', 'Sentimental'],
+                team: 'Team Bubu'
+            },
+            'dudu-guardian': {
+                title: 'Dudu Gentle Guard',
+                gif: 'dudu1.gif',
+                leftGif: 'dudu4.gif',
+                rightGif: 'dudu4.gif',
+                description: 'Calm, steady, and protective. You keep everyone safe, remember the details, and offer grounding reassurance when it matters most.',
+                traits: ['Steady', 'Loyal', 'Thoughtful', 'Protective'],
+                team: 'Team Dudu'
+            },
+            'dudu-cozy': {
+                title: 'Dudu Cozy Cloud',
+                gif: 'dudu5.gif',
+                leftGif: 'dudu7.gif',
+                rightGif: 'dudu7.gif',
+                description: 'Soft blankets, warm drinks, and gentle smiles. You make spaces feel like home and help everyone exhale.',
+                traits: ['Comforting', 'Patient', 'Nurturing', 'Calming'],
+                team: 'Team Dudu'
+            },
+            'duo-harmony': {
+                title: 'Bubududu Harmony',
+                gif: 'bubududu2.gif',
+                leftGif: 'bubududu3.gif',
+                rightGif: 'bubududu3.gif',
+                description: 'The perfect blend—playful energy with soft steadiness. You adapt, balance, and create warmth wherever you go.',
+                traits: ['Balanced', 'Affectionate', 'Adaptable', 'Team-first'],
+                team: 'Team Bubududu'
+            }
+        };
+
+        // Form validation - enable submit only when all questions are answered
+        function checkFormCompletion() {
+            const totalQuestions = 8;
+            let answeredQuestions = 0;
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionAnswered = document.querySelector(`input[name="q${i}"]:checked`);
+                if (questionAnswered) answeredQuestions++;
+            }
+            const submitButton = document.querySelector('.submit-quiz');
+            submitButton.disabled = answeredQuestions !== totalQuestions;
+        }
+        
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', checkFormCompletion);
+        });
+        
+        document.querySelector('.scroll-to-quiz').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('quiz').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+        
+        // Calculate personality type
+        function calculatePersonality(answers) {
+            const personalityScores = {
+                'bubu-spark': 0,
+                'bubu-creative': 0,
+                'dudu-guardian': 0,
+                'dudu-cozy': 0,
+                'duo-harmony': 0
+            };
+            
+            answers.forEach((answer, index) => {
+                const value = answer.value;
+                switch(index) {
+                    case 0: // Weekend preference
+                        if (value === 'outdoor') personalityScores['bubu-spark'] += 3;
+                        if (value === 'date') personalityScores['duo-harmony'] += 2;
+                        if (value === 'cozy') personalityScores['dudu-cozy'] += 3;
+                        if (value === 'craft') personalityScores['bubu-creative'] += 3;
+                        break;
+                    case 1: // Group behavior
+                        if (value === 'lead-pranks') personalityScores['bubu-spark'] += 2;
+                        if (value === 'hype') personalityScores['bubu-creative'] += 2;
+                        if (value === 'watchful') personalityScores['dudu-guardian'] += 3;
+                        if (value === 'host') personalityScores['dudu-cozy'] += 2;
+                        break;
+                    case 2: // Decision making
+                        if (value === 'jump-first') personalityScores['bubu-spark'] += 2;
+                        if (value === 'plan-ahead') personalityScores['dudu-guardian'] += 2;
+                        if (value === 'improvise-fun') personalityScores['bubu-creative'] += 2;
+                        if (value === 'slow-steady') personalityScores['dudu-cozy'] += 2;
+                        break;
+                    case 3: // Affection style
+                        if (value === 'grand-gesture') personalityScores['bubu-creative'] += 3;
+                        if (value === 'snug-cuddle') personalityScores['dudu-cozy'] += 3;
+                        if (value === 'protective') personalityScores['dudu-guardian'] += 3;
+                        if (value === 'playful-boop') personalityScores['bubu-spark'] += 2;
+                        break;
+                    case 4: // Stress response
+                        if (value === 'move-body') personalityScores['bubu-spark'] += 2;
+                        if (value === 'snack-nap') personalityScores['dudu-cozy'] += 2;
+                        if (value === 'organize') personalityScores['dudu-guardian'] += 2;
+                        if (value === 'draw-it') personalityScores['bubu-creative'] += 2;
+                        break;
+                    case 5: // Communication
+                        if (value === 'gif-storm') personalityScores['bubu-creative'] += 2;
+                        if (value === 'quiet-assurance') personalityScores['dudu-guardian'] += 2;
+                        if (value === 'playful-roast') personalityScores['bubu-spark'] += 2;
+                        if (value === 'listening') personalityScores['dudu-cozy'] += 2;
+                        break;
+                    case 6: // Motivation
+                        if (value === 'thrill') personalityScores['bubu-spark'] += 2;
+                        if (value === 'steady-home') personalityScores['dudu-guardian'] += 2;
+                        if (value === 'home-base') personalityScores['dudu-cozy'] += 2;
+                        if (value === 'spread-joy') personalityScores['bubu-creative'] += 2;
+                        break;
+                    case 7: // Free time
+                        if (value === 'street-food') personalityScores['bubu-spark'] += 2;
+                        if (value === 'movie-cocoon') personalityScores['dudu-cozy'] += 2;
+                        if (value === 'plan-surprise') personalityScores['bubu-creative'] += 2;
+                        if (value === 'share-sunset') personalityScores['duo-harmony'] += 3;
+                        break;
+                }
+            });
+            
+            const scores = Object.values(personalityScores);
+            const maxScore = Math.max(...scores);
+            const highScores = scores.filter(score => score >= maxScore - 2);
+            if (highScores.length >= 3 && maxScore <= 8) {
+                personalityScores['duo-harmony'] = maxScore + 1;
+            }
+            return Object.keys(personalityScores).reduce((a, b) => 
+                personalityScores[a] > personalityScores[b] ? a : b
+            );
+        }
+        
+        document.getElementById('personality-quiz').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            const personalityType = calculatePersonality(answers);
+            const personality = personalityTypes[personalityType];
+            
+            document.getElementById('result-text').textContent = personality.title;
+            document.getElementById('result-gif-left').src = personality.leftGif;
+            document.getElementById('result-gif-right').src = personality.rightGif;
+            document.getElementById('result-main-gif').src = personality.gif;
+            document.getElementById('result-description').textContent = personality.description;
+            
+            const traitsContainer = document.getElementById('result-traits');
+            traitsContainer.innerHTML = '';
+            personality.traits.forEach(trait => {
+                const traitTag = document.createElement('span');
+                traitTag.className = 'trait-tag';
+                traitTag.textContent = trait;
+                traitsContainer.appendChild(traitTag);
+            });
+            
+            window.currentPersonalityType = personalityType;
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Copy CA functionality
+        document.getElementById('copy-ca-btn').addEventListener('click', async function() {
+            const button = this;
+            const originalHTML = button.innerHTML;
+            const caAddress = document.getElementById('ca-address').textContent;
+            try {
+                await navigator.clipboard.writeText(caAddress);
+                button.classList.add('copied');
+                button.innerHTML = '<img src="bubu6.gif" class="mini-gif" alt=""> Copied!';
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            } catch (error) {
+                console.error('Failed to copy CA:', error);
+                button.innerHTML = '<img src="bubududu5.gif" class="mini-gif" alt=""> Failed';
+                setTimeout(() => { button.innerHTML = originalHTML; }, 2000);
+            }
+        });
+        
+        // Try Again functionality
+        document.getElementById('try-again').addEventListener('click', function() {
+            document.getElementById('personality-quiz').reset();
+            document.getElementById('quiz-result').style.display = 'none';
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+            document.querySelector('.submit-quiz').disabled = true;
+        });
+    </script>
+</body>
+</html>
